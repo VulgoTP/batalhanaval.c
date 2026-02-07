@@ -1,60 +1,61 @@
 #include <stdio.h>
 
+#define TAMANHO 10 
+#define NAVIO 3
+#define AGUA 0
+
 int main() {
-    int tabuleiro[10][10];
-    int navioHorizontal[3] = {3, 3, 3};
-    int navioVertical[3]   = {3, 3, 3};
+    int tabuleiro[TAMANHO][TAMANHO];
 
-   
-    int linhaH = 2, colunaH = 3; 
-    int linhaV = 5, colunaV = 5; 
+    // Coordenadas iniciais
+    int linhaH = 1, colunaH = 1; // Horizontal →
+    int linhaV = 4, colunaV = 7; // Vertical ↓
 
-    
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            tabuleiro[i][j] = 0;
+    // Inicializa o tabuleiro com água
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
+            tabuleiro[i][j] = AGUA;
         }
     }
 
-  
-    if (colunaH + 3 > 10) {
+    // ===== Navio Horizontal =====
+    if (colunaH + 2 >= TAMANHO) {
         printf("Erro: navio horizontal fora do tabuleiro.\n");
         return 1;
     }
 
     for (int i = 0; i < 3; i++) {
-        if (tabuleiro[linhaH][colunaH + i] != 0) {
+        if (tabuleiro[linhaH][colunaH + i] != AGUA) {
             printf("Erro: sobreposição no navio horizontal.\n");
             return 1;
         }
     }
 
-
     for (int i = 0; i < 3; i++) {
-        tabuleiro[linhaH][colunaH + i] = navioHorizontal[i];
+        tabuleiro[linhaH][colunaH + i] = NAVIO;
     }
 
-
-    if (linhaV + 3 > 10) {
+    // ===== Navio Vertical =====
+    if (linhaV + 2 >= TAMANHO) {
         printf("Erro: navio vertical fora do tabuleiro.\n");
         return 1;
     }
 
     for (int i = 0; i < 3; i++) {
-        if (tabuleiro[linhaV + i][colunaV] != 0) {
+        if (tabuleiro[linhaV + i][colunaV] != AGUA) {
             printf("Erro: sobreposição no navio vertical.\n");
             return 1;
         }
     }
 
     for (int i = 0; i < 3; i++) {
-        tabuleiro[linhaV + i][colunaV] = navioVertical[i];
+        tabuleiro[linhaV + i][colunaV] = NAVIO;
     }
 
-
-    printf("\nTabuleiro Batalha Naval:\n\n");
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
+    // ===== Exibir Tabuleiro =====
+    printf("\nTabuleiro Batalha Naval (10x10):\n\n");
+    for (int i = 0; i < TAMANHO; i++) {
+        for (int j = 0; j < TAMANHO; j++) {
             printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
