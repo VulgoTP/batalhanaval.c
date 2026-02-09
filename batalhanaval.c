@@ -7,18 +7,18 @@
 int main() {
     int tabuleiro[TAMANHO][TAMANHO];
 
-    // Coordenadas iniciais
-    int linhaH = 1, colunaH = 1; // Horizontal →
-    int linhaV = 4, colunaV = 7; // Vertical ↓
+   
+    int linhaH = 1, colunaH = 1; 
+    int linhaV = 4, colunaV = 7; 
 
-    // Inicializa o tabuleiro com água
+   
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {
             tabuleiro[i][j] = AGUA;
         }
     }
 
-    // ===== Navio Horizontal =====
+    
     if (colunaH + 2 >= TAMANHO) {
         printf("Erro: navio horizontal fora do tabuleiro.\n");
         return 1;
@@ -35,7 +35,7 @@ int main() {
         tabuleiro[linhaH][colunaH + i] = NAVIO;
     }
 
-    // ===== Navio Vertical =====
+   
     if (linhaV + 2 >= TAMANHO) {
         printf("Erro: navio vertical fora do tabuleiro.\n");
         return 1;
@@ -52,7 +52,7 @@ int main() {
         tabuleiro[linhaV + i][colunaV] = NAVIO;
     }
 
-    // ===== Exibir Tabuleiro =====
+   
     printf("\nTabuleiro Batalha Naval (10x10):\n\n");
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {
