@@ -6,33 +6,33 @@
 #define AGUA 0
 #define NAVIO 3
 #define HABILIDADE 5
-#define H 5   // tamanho das matrizes de habilidade (5x5)
+#define H 5  
 
 int main() {
     int tabuleiro[TAMANHO][TAMANHO];
 
-    // Inicializa tabuleiro com água
+
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {
             tabuleiro[i][j] = AGUA;
         }
     }
 
-    // ===== POSICIONAR NAVIOS =====
-    int linhaH = 1, colunaH = 1; // horizontal
-    int linhaV = 4, colunaV = 7; // vertical
+    // navios
+    int linhaH = 1, colunaH = 1; 
+    int linhaV = 4, colunaV = 7; 
 
     for (int i = 0; i < 3; i++) {
         tabuleiro[linhaH][colunaH + i] = NAVIO;
         tabuleiro[linhaV + i][colunaV] = NAVIO;
     }
 
-    // ===== MATRIZES DE HABILIDADE =====
+    
     int cone[H][H];
     int cruz[H][H];
     int octaedro[H][H];
 
-    // ===== CONE (apontando para baixo) =====
+    // cone
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < H; j++) {
             if (j >= (H/2 - i) && j <= (H/2 + i)) {
@@ -43,7 +43,7 @@ int main() {
         }
     }
 
-    // ===== CRUZ =====
+   //cruz
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < H; j++) {
             if (i == H/2 || j == H/2) {
@@ -54,7 +54,7 @@ int main() {
         }
     }
 
-    // ===== OCTAEDRO (losango) =====
+    // losango
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < H; j++) {
             if (abs(i - H/2) + abs(j - H/2) <= H/2) {
@@ -65,12 +65,12 @@ int main() {
         }
     }
 
-    // ===== ORIGENS DAS HABILIDADES =====
+    // habilidades
     int origemConeL = 2, origemConeC = 2;
     int origemCruzL = 6, origemCruzC = 3;
     int origemOctL  = 5, origemOctC  = 6;
 
-    // ===== SOBREPOR HABILIDADES =====
+  
     for (int i = 0; i < H; i++) {
         for (int j = 0; j < H; j++) {
 
@@ -105,7 +105,7 @@ int main() {
         }
     }
 
-    // ===== EXIBIR TABULEIRO =====
+  
     printf("\nTabuleiro Batalha Naval com Habilidades:\n\n");
     for (int i = 0; i < TAMANHO; i++) {
         for (int j = 0; j < TAMANHO; j++) {
